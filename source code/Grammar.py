@@ -27,7 +27,8 @@ class RegularGrammar:
             self.word_list.append(aux)
         self.word_list=self.word_list[1:]
         print(f'generated word: {self.word}')
-        print(f'used transitions: {self.word_list}')
+        print(f'used transitions for created word: {self.word_list}')
+        return self.word
 
 
     def ConvertFA(self):
@@ -55,9 +56,11 @@ class RegularGrammar:
         automaton = FiniteAutomata(initial_states,
                                    final_states,
                                    self.alphabet,
-                                   transition_functions,
-                                   self.word_list)
+                                   transition_functions)
+        return automaton
+
         print('Verdict: ',end='')
+
         if automaton.checkWord(self.word):
             print('Valid word')
         else:

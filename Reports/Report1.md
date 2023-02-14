@@ -58,20 +58,21 @@ The ConvertFA method helps turning the grammar, together with its transitions in
 typical attributes (finite set of states, alphabet, transition set, initial states, and accepting states)
 
 The Finite Automata class contains a simple method that checks whether the word is valid. It basically checks the final 
-initial states, the alphabet used in the word, and most important if the transitions by which the word was obtained are
-valid, and finally providing feedback whether the word itself is legal regarding the provided grammar laws.
+initial states, the alphabet used in the word, and most important if the word can be obtained by the transitions layed 
+out from the grammar.
 
 The transitions were switched however, from dictionaries to simple lists, for more comfortable use, and because of
-necessary key duplication.
+necessary key duplication, as well as the algorithm for validating words.
 
 ---
 
 ## Conclusions / Screenshots / Results
 
 In the end, the created program proved itself capable of generating valid words from the regular grammar provided, and
-additionally to check them using an automaton with specific attributes for the grammar.
+additionally to check them using an automaton with specific attributes for the grammar. In this particular instance, 
+a user defined word was tested after generating the 5 valid ones.
 ### Practical results:
-![screenshot](images/lfafscreenshot.PNG)
+![screenshot](images/lfafscreenshot.png)
 
 An upside of the program is that is works for any given grammar, not only the given variant. For example variant 2 from 
 the same laboratory:
