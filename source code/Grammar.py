@@ -36,12 +36,6 @@ class RegularGrammar:
         for state in self.P['S']:
             initial_states.append(state[0])
 
-        final_states = []
-        for key in self.P:
-            for state in self.P[key]:
-                if state.islower():
-                    final_states.append(state)
-
         transition_functions = []
         for key in self.P:
             for state in self.P[key]:
@@ -54,14 +48,62 @@ class RegularGrammar:
 
 
         automaton = FiniteAutomata(initial_states,
-                                   final_states,
+                                   self.Vt,
                                    self.alphabet,
-                                   transition_functions)
+                                   transition_functions,
+                                   self.Vn)
         return automaton
 
-        print('Verdict: ',end='')
+    def chumsky_type(self):
 
-        if automaton.checkWord(self.word):
-            print('Valid word')
-        else:
-            print('Invalid word')
+        def upper_number(state):
+            uppers = 0
+            for letter in state:
+                if letter.isupper():
+                    uppers += 1
+            return uppers
+
+        def upper_pos(state):
+            pos = 0
+            for i in range(0, len(state)):
+                if state[i].isupper():
+                    pos=i
+            if pos == len(state)-1:
+                return -1
+            return pos
+
+
+        chum_type = 3
+        for key in self.P:
+            if len(key)>=2:
+                chum_type = 1
+            for state in self.P[key]:
+                if state == '' and chum_type == 1:
+                    return 0
+
+        if chum_type==1:
+            return 1
+
+        for key in self.P:
+            for state in self.P[key]:
+                if upper_number(state)>1:
+                    return 2
+                elif upper_number(state)==1:
+                    location = upper_pos(state)
+
+        for key in self.P:
+            if upper_number(self.P[key][0])>1:
+                return 2
+            if upper_pos(self.P[key][0]) not in [0,-1]:
+                return 2
+            for i in range(1,len(self.P[key])):
+                if not self.P[key][i].islower() and self.P[key][i] != '':
+                    if upper_number(self.P[key][i])>1:
+                        return 2
+                    if upper_pos(self.P[key][i]) != upper_pos(self.P[key][i-1]):
+                        return 2
+        return chum_type
+
+
+
+

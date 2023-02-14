@@ -72,7 +72,7 @@ In the end, the created program proved itself capable of generating valid words 
 additionally to check them using an automaton with specific attributes for the grammar. In this particular instance, 
 a user defined word was tested after generating the 5 valid ones.
 ### Practical results:
-![screenshot](images/lfafscreenshot.png)
+![screenshot](images/lfafscreenshots.PNG)
 
 An upside of the program is that is works for any given grammar, not only the given variant. For example variant 2 from 
 the same laboratory:
