@@ -32,7 +32,7 @@ transition from it;
 
 ---
 
-##Implementation description:
+## Implementation description:
 To begin with, the grammar provided for the formal language inserted into lists and the transitions are initially 
 transfered into a dictionary:
 ```
