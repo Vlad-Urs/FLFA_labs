@@ -23,9 +23,9 @@
 
 ---
 
-##Implementation description:
+## Implementation description:
 
-###1. Creating the method that can determine the grammar type based on Chomsky hierarchy.
+### 1. Creating the method that can determine the grammar type based on Chomsky hierarchy.
 A method is added to the RegularGrammar that checks for each Chomsky rule in turn.
 The method checks first for the Type 0, and Type 1,
 ```
@@ -80,7 +80,7 @@ grammar type
 2
 ```
 
-###2. Converting finite automaton to regular grammar:
+### 2. Converting finite automaton to regular grammar:
 The new method, convertGrammar(), in the FiniteAutomata class essentially does the reverse of the convertFA() method 
 from the RegularGrammar class, and that is converting the list representing the transition functions, to a dictionary 
 representing the transitions in a regular grammar.
@@ -131,7 +131,7 @@ B -> ['bC']
 C -> []
 ```
 
-###3. Determining automaton type (NFA/DFA)
+### 3. Determining automaton type (NFA/DFA)
 The newly added, automatonType(), method in FiniteAutomata determines whether the automaton is deterministic or
 non-deterministic, by checking 2 things. a) If every node is complete, and has all the inputs available, and b) 
 If you can reach more than one node with the same input.
@@ -174,7 +174,7 @@ Testing for a modified automaton:
 automaton type: DFA
 ```
 
-###4. Converting an NFA to a DFA
+### 4. Converting an NFA to a DFA
 The algorithm of transforming an NFA is relatively simple. 
 
 Firstly, the transitions are laid down in an array, with the states as rows, and inputs as columns.
