@@ -265,3 +265,14 @@ delta:
 ['C', 'c', 'dead_state']
 
 ```
+
+### 5. Drawing the Finite automaton graphs
+A new method was implemented for the FiniteAutomata class, which makes use of the Graphviz library, to draw the nodes
+and edges.
+For the gives, non-definite automaton:
+
+![screenshot](images/lab2_graph1.PNG)
+
+And for the respective DFA:
+
+![screenshot](images/lab2_graph2.PNG)

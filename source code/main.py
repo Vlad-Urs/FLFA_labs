@@ -83,6 +83,8 @@ print('delta:')
 for row in new_dfa.delta:
    print(row)
 
+new_new_automaton.display()
+
 #for transition in new_new_automaton.delta:
 #    print(transition)
 #print(f'automaton type: {new_new_automaton.automatonType()}')

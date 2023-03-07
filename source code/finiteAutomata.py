@@ -131,6 +131,26 @@ class FiniteAutomata:
                 if state in other_state:
                     finals.append(other_state)
 
-        new_automaton = FiniteAutomata(self.q0, finals, self.sigma, delta2, Q2)
+        new_automaton = FiniteAutomata(self.q0[0], finals, self.sigma, delta2, Q2)
         return new_automaton
 
+
+    def display(self):
+        import graphviz
+
+        f = graphviz.Digraph('finite_state_machine', filename='../Automaton Graphs/fsm.gv')
+        # specifying the direction left-to-right
+        f.attr(rankdir='LR', size='8,5')
+
+        # specifying final states by double-circling them
+        f.attr('node', shape='doublecircle')
+        for state in self.F:
+            f.node(state)
+
+        # creating the nodes and the edges in-between
+        f.attr('node', shape='circle')
+        for transition in self.delta:
+            if len(transition)>2:
+                f.edge(transition[0],transition[2],transition[1])
+
+        f.view()
