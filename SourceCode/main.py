@@ -1,41 +1,39 @@
 from Grammar import RegularGrammar
 from finiteAutomata import FiniteAutomata
+from CNF import CNFConvertor
 
-vn = ['S','A','B','C']
+
+# Variant 28
+vn = ['S','A','B','C','D','X']
 vt = ['a','b']
 p = {
-    'S':['aA'],
-    'A':['bS','aB'],
-    'B':['bC','aBB'],
-    'C':['aA','b'],
+    "S": ["B"],
+    "A": ["aX", "bX"],
+    "X": ["", "BX", "b"],
+    "B": ["AXaD"],
+    "C": ["Ca"],
+    "D": ["aD","a"]
+
 }
 a= vt
 
 
-from Grammar import RegularGrammar
-from finiteAutomata import FiniteAutomata
-
-vn = ['S','A','B','C']
+'''
+# Variant 1
+vn = ['S','A','B','C', 'D', 'E']
 vt = ['a','b']
-
+p = {
+    "S": ["aB", "AC"],
+    "A": ["a", "ASC", "BC","AD"],
+    "B": ["b", "bS", "AC"],
+    "C": ["", "BA"],
+    "E": ["aB"],
+    "D": ["abC"]
+}
 a= vt
+'''
 
 new_grammar = RegularGrammar(vn,vt,p,a)
-new_automaton = new_grammar.ConvertFA()
-
-
-for i in range(5):
-    new_grammar.GenerateWord()
-    new_grammar.ConvertFA()
-    print()
-    word = new_grammar.GenerateWord()
-    if new_automaton.checkWord(word):
-        print('Valid word')
-    print()
-
-user_word = 'abbbbaaaabbb'
-if new_automaton.checkWord(user_word):
-    print('user word is valid')
-else:
-    print('user word not valid')
-
+cnf_form = new_grammar.ConvertCNF()
+for key in cnf_form.p:
+    print(f'{key} : {cnf_form.p[key]}')

@@ -2,6 +2,8 @@ import random
 
 from finiteAutomata import FiniteAutomata
 
+from CNF import CNFConvertor
+
 class RegularGrammar:
     def __init__(self,Vn,Vt,P,a):
         self.Vn = Vn
@@ -72,7 +74,6 @@ class RegularGrammar:
                 return -1
             return pos
 
-
         chum_type = 3
         for key in self.P:
             if len(key)>=2:
@@ -103,6 +104,24 @@ class RegularGrammar:
                     if upper_pos(self.P[key][i]) != upper_pos(self.P[key][i-1]):
                         return 2
         return chum_type
+
+    def ConvertCNF(self):
+        # Create convertor instance
+        chomsky_form = CNFConvertor(self.P, self.Vn)
+        # Remove Epsilon-transitions
+        chomsky_form.RemoveEpsilon()
+        # Remove unit productions, key by key
+        for key in chomsky_form.p:
+            chomsky_form.RemoveUnitProd(key)
+        # Remove unproductive symbols:
+        chomsky_form.RemoveUnproductive()
+        # Remove inaccesible, and cleanup the grammar
+        chomsky_form.Cleanup()
+        # Obtain the final Chomsky form
+        chomsky_form.Transform()
+
+
+        return chomsky_form
 
 
 
