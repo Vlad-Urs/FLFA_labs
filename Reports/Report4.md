@@ -362,7 +362,7 @@ Process finished with exit code 0
 ### Step 5. Transforming it into Chomsky Normal Form:
 
 Now here is a lot to explain, and I am tired
-I'll do it next week.
+I'll do it next week, certainly.
 
 in any case, here's how the grammar looks in the end:
 

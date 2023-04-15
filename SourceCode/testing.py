@@ -62,7 +62,7 @@ class TestMethods(unittest.TestCase):
 
     def test_cln(self):
         self.cnf_grammar.p = correct_3
-        self.assertEqual(self.cnf_grammar.Cleanup(),correct_3,'The cleanup went wrong')
+        self.assertEqual(self.cnf_grammar.Cleanup(),correct_3,'The cleanup went wrong!')
 
 
 if __name__ == '__main__':

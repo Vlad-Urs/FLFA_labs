@@ -130,7 +130,7 @@ class CNFConvertor:
 
         return self.p
 
-    # Checks if a state should be modified
+    # Checks if a state should be modified or not
     def Modifiable(self,state):
         if len(state) == 1 and state.islower():
             return False

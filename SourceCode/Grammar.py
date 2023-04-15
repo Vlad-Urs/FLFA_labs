@@ -117,7 +117,7 @@ class RegularGrammar:
         chomsky_form.RemoveUnproductive()
         # Remove inaccesible, and cleanup the grammar
         chomsky_form.Cleanup()
-        # Obtain the final Chomsky form
+        # Obtain the final Chomsky normal form
         chomsky_form.Transform()
 
 
