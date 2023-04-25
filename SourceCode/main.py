@@ -2,7 +2,7 @@ from Grammar import RegularGrammar
 from finiteAutomata import FiniteAutomata
 from CNF import CNFConvertor
 
-
+'''
 # Variant 28
 vn = ['S','A','B','C','D','X']
 vt = ['a','b']
@@ -19,19 +19,18 @@ a = vt
 
 
 '''
-# Variant 1
-vn = ['S','A','B','C', 'D', 'E']
-vt = ['a','b']
+# Variant 4
 p = {
-    "S": ["aB", "AC"],
-    "A": ["a", "ASC", "BC","AD"],
-    "B": ["b", "bS", "AC"],
-    "C": ["", "BA"],
-    "E": ["aB"],
-    "D": ["abC"]
+'S' : ['bA', 'A', 'aB'],
+'A' : ['B', 'bBAB', 'b', 'AS'],
+'B' : ['bS', 'aD', '', 'b'],
+'D' : ['AA'],
+'C' : ['Ba']
 }
+vn = ['S', 'A', 'B', 'C', 'D']
+vt = ['a', 'b']
 a= vt
-'''
+
 
 new_grammar = RegularGrammar(vn,vt,p,a)
 cnf_form = new_grammar.ConvertCNF()

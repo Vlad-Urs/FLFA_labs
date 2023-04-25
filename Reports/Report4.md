@@ -361,10 +361,11 @@ Process finished with exit code 0
 ```
 ### Step 5. Transforming it into Chomsky Normal Form:
 
-Now here is a lot to explain, and I am tired
-I'll do it next week, certainly.
+Obtaining the final form by splitting the string in half, and looking in
+another dictionary if the new state was already created, otherwise a new
+state is given, in the form of a capital letter from the latin alphabet.
 
-in any case, here's how the grammar looks in the end:
+Here be the final result.
 
 ```commandline
 A : ['a', 'b', 'EX', 'FX']
@@ -376,7 +377,42 @@ G : ['AX']
 H : ['ED']
 ```
 
-Very good, eh? 
-It works for other variants as well, and I'll add that too
+Proof that it works for other variants ass well:
 
-# Merry Easter to me!
+Variant 1:
+```commandline
+Initial:
+    "S": ["aB", "AC"],
+    "A": ["a", "ASC", "BC","AD"],
+    "B": ["b", "bS", "AC"],
+    "C": ["", "BA"],
+    "E": ["aB"],
+    "D": ["abC"]
+
+Final:
+   S : ['a', 'BC', 'AD', 'AS', 'AC', 'FS']
+   A : ['a', 'BC', 'AD', 'AS', 'b', 'FS']
+   D : ['GF']
+   F : ['b']
+   G : ['a']
+```
+
+
+Variant 4:
+```commandline
+Initial:
+    'S' : ['bA', 'A', 'aB'],
+   'A' : ['B', 'bBAB', 'b', 'AS'],
+   'B' : ['bS', 'aD', '', 'b'],
+   'D' : ['AA'],
+   'C' : ['Ba']
+
+Final:
+   S : ['a', 'b', 'AS', 'EA', 'FB', 'ES']
+   A : ['b', 'AS', 'GH', 'EA', 'ES']
+   B : ['b', 'ES']
+   E : ['b']
+   F : ['a']
+   G : ['EB']
+   H : ['AB']
+```

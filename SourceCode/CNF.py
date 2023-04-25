@@ -194,5 +194,7 @@ class CNFConvertor:
                 if changes:
                     break
 
-            #print(self.p)
+            # removing duplicates
+            for key in self.p:
+                self.p[key] = list(dict.fromkeys(self.p[key]))
 
