@@ -57,11 +57,11 @@ graphs and the 'nx' and 'matplotlib' libraries.
 
 The whole method is in the Parser class, and the result looks like this:
 
-![screenshot](images/lab5_1.PNG)
+![screenshot](images/lab5_1.png)
 
 And a bit more zoomed in:
 
-![screenshot](images/lab5_2.PNG)
+![screenshot](images/lab5_2.png)
 
 Finally moving on to the last point, the parser.
 
