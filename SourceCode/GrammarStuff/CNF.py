@@ -113,6 +113,7 @@ class CNFConvertor:
                     if letter.isupper() and letter not in self.Vn:
                         self.p[key].remove(state)
 
+
         # Then check and remove any inaccesible nodes
         # nont is non-terminal
         for nont in self.Vn:

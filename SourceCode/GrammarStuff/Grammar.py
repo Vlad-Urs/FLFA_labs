@@ -110,13 +110,26 @@ class RegularGrammar:
         chomsky_form = CNFConvertor(self.P, self.Vn)
         # Remove Epsilon-transitions
         chomsky_form.RemoveEpsilon()
+        for key in self.P:
+            print(f'{key}: {self.P[key]}')
+        print()
         # Remove unit productions, key by key
         for key in chomsky_form.p:
             chomsky_form.RemoveUnitProd(key)
+        for key in self.P:
+            print(f'{key}: {self.P[key]}')
+        print()
         # Remove unproductive symbols:
         chomsky_form.RemoveUnproductive()
+        for key in self.P:
+            print(f'{key}: {self.P[key]}')
+        print()
+        print(self.Vn)
         # Remove inaccesible, and cleanup the grammar
         chomsky_form.Cleanup()
+        for key in self.P:
+            print(f'{key}: {self.P[key]}')
+        print()
         # Obtain the final Chomsky normal form
         chomsky_form.Transform()
 

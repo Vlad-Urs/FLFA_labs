@@ -1,4 +1,4 @@
-import Grammar as G
+from SourceCode.GrammarStuff import Grammar as G
 
 
 class FiniteAutomata:
@@ -138,7 +138,7 @@ class FiniteAutomata:
     def display(self):
         import graphviz
 
-        f = graphviz.Digraph('finite_state_machine', filename='../Automaton Graphs/fsm.gv')
+        f = graphviz.Digraph('finite_state_machine', filename='../../Automaton Graphs/fsm.gv')
         # specifying the direction left-to-right
         f.attr(rankdir='LR', size='8,5')
 

@@ -1,3 +1,5 @@
+import re
+
 class Lexer:
     def __init__(self, file):
         self.f = open(file, 'r')
@@ -26,9 +28,6 @@ class Lexer:
         self.token_list = []
 
         self.unorganized_tokens = self.f.read().split()
-
-    def tokenize(self):
-
         i = -1
         while i < len(self.unorganized_tokens)-1:
 
@@ -41,6 +40,7 @@ class Lexer:
                 self.unorganized_tokens.insert(i + 2, '.')
                 if pos != len(self.unorganized_tokens[i])-1:
                     self.unorganized_tokens.insert(i + 3, self.unorganized_tokens[i][pos+1:])
+                self.unorganized_tokens.pop(i)
                 continue
 
 
@@ -49,7 +49,15 @@ class Lexer:
                 pos = self.unorganized_tokens[i].index(';')
                 self.unorganized_tokens.insert(i + 1, self.unorganized_tokens[i][:pos])
                 self.unorganized_tokens.insert(i + 2, ';')
+                self.unorganized_tokens.pop(i)
                 continue
+
+    def tokenize(self):
+
+        i = -1
+        while i < len(self.unorganized_tokens)-1:
+
+            i += 1
 
 
             if self.unorganized_tokens[i] in self.grammar:
@@ -64,7 +72,28 @@ class Lexer:
 
 
 
-NewLexer = Lexer('DSLCode\code.txt')
-tokens = NewLexer.tokenize()
+    def regex_tokenize(self):
+        for token in self.unorganized_tokens:
+            category = self.categorize_token(token)
+            self.token_list.append([category, token])
 
-print(tokens)
+        return self.token_list
+
+    def categorize_token(self, token):
+        for pattern, category in self.grammar.items():
+            if token.isnumeric():
+                return 'numeric'
+
+            if re.match(pattern, token):
+                return category
+
+
+
+        return 'unknown'
+
+
+
+
+
+
+
